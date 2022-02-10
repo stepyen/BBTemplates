@@ -1,6 +1,9 @@
 package com.babybus.plugin.${name_lower_case}
 
-import com.babybus.base.BasePlugin
+import android.content.Context
+import com.babybus.base.AppModule
+import com.babybus.base.constants.AppModuleName
+import com.babybus.plugins.interfaces.I${name}
 
 
 /**
@@ -8,7 +11,14 @@ import com.babybus.base.BasePlugin
  * author：stepyen
  * description:
  */
-class ${pluginName} : BasePlugin() {
+class ${pluginName}(context: Context?) : AppModule<I${name}>(context), I${name} {
    
+    override fun getModuleName(): String = AppModuleName.${name}
+
+    override fun desc(): String = AppModuleName.${name}
+
+    override fun getModuleImpl(): I${name} {
+        return this
+    }
 
 }
